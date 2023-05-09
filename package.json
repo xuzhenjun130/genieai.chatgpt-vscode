@@ -195,103 +195,103 @@
     "commands": [
       {
         "command": "chatgpt-vscode.oneShot",
-        "title": "精灵：编辑器视图",
+        "title": "Genie: 编辑器视图",
         "icon": "$(file-code)"
       },
       {
         "command": "chatgpt-vscode.exportConversation",
-        "title": "精灵：导出对话",
+        "title": "Genie: 导出对话",
         "icon": "$(export)"
       },
       {
         "command": "chatgpt-vscode.conversationList",
-        "title": "精灵：显示对话",
+        "title": "Genie: 显示对话",
         "icon": "$(history)"
       },
       {
         "command": "chatgpt-vscode.newChat",
-        "title": "精灵：开始新聊天",
+        "title": "Genie: 开始新聊天",
         "icon": "$(add)"
       },
       {
         "command": "chatgpt-vscode.conversationView",
-        "title": "精灵：对话视图",
+        "title": "Genie: 对话视图",
         "icon": "$(comment-discussion)"
       },
       {
         "command": "chatgpt-vscode.openSettings",
-        "title": "精灵：显示设置",
+        "title": "Genie: 显示设置",
         "icon": "$(settings-gear)"
       },
       {
         "command": "chatgpt-vscode.freeText",
-        "title": "精灵：任意提问"
+        "title": "Genie: 任意提问"
       },
       {
         "command": "chatgpt-vscode.clearSession",
-        "title": "精灵：重置会话"
+        "title": "Genie: 重置会话"
       },
       {
         "command": "chatgpt-vscode.clearApiKey",
-        "title": "精灵：清除API密钥"
+        "title": "Genie: 清除API密钥"
       },
       {
         "command": "chatgpt-vscode.generateCode",
-        "title": "精灵：生成代码",
+        "title": "Genie: 生成代码",
         "enablement": "editorHasSelection"
       },
       {
         "command": "chatgpt-vscode.addTests",
-        "title": "精灵：添加测试",
+        "title": "Genie: 添加测试",
         "enablement": "editorHasSelection"
       },
       {
         "command": "chatgpt-vscode.findProblems",
-        "title": "精灵：查找错误",
+        "title": "Genie: 查找错误",
         "enablement": "editorHasSelection"
       },
       {
         "command": "chatgpt-vscode.optimize",
-        "title": "精灵：优化",
+        "title": "Genie: 优化",
         "enablement": "editorHasSelection"
       },
       {
         "command": "chatgpt-vscode.explain",
-        "title": "精灵：解释",
+        "title": "Genie: 解释",
         "enablement": "editorHasSelection"
       },
       {
         "command": "chatgpt-vscode.addComments",
-        "title": "精灵：添加注释",
+        "title": "Genie: 添加注释",
         "enablement": "editorHasSelection"
       },
       {
         "command": "chatgpt-vscode.completeCode",
-        "title": "精灵：帮写代码",
+        "title": "Genie: 帮写代码",
         "enablement": "editorHasSelection"
       },
       {
         "command": "chatgpt-vscode.adhoc",
-        "title": "精灵：即席提示",
+        "title": "Genie: 即席提示",
         "enablement": "editorHasSelection"
       },
       {
         "command": "chatgpt-vscode.customPrompt1",
-        "title": "精灵：自定义翻译",
+        "title": "Genie: 自定义翻译",
         "enablement": "editorHasSelection"
       },
       {
         "command": "chatgpt-vscode.customPrompt2",
-        "title": "精灵：自定义提示2",
+        "title": "Genie: 自定义提示2",
         "enablement": "editorHasSelection"
       },
       {
         "command": "chatgpt-vscode.clearConversation",
-        "title": "精灵：清除对话"
+        "title": "Genie: 清除对话"
       },
       {
         "command": "chatgpt-vscode.whatsNew",
-        "title": "精灵：最新消息",
+        "title": "Genie: 最新消息",
         "icon": "$(info)"
       }
     ],
