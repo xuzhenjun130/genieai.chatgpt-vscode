@@ -195,103 +195,103 @@
     "commands": [
       {
         "command": "chatgpt-vscode.oneShot",
-        "title": "Genie: Editor view",
+        "title": "精灵：编辑器视图",
         "icon": "$(file-code)"
       },
       {
         "command": "chatgpt-vscode.exportConversation",
-        "title": "Genie: Export conversation",
+        "title": "精灵：导出对话",
         "icon": "$(export)"
       },
       {
         "command": "chatgpt-vscode.conversationList",
-        "title": "Genie: Show conversations",
+        "title": "精灵：显示对话",
         "icon": "$(history)"
       },
       {
         "command": "chatgpt-vscode.newChat",
-        "title": "Genie: Start a new chat",
+        "title": "精灵：开始新聊天",
         "icon": "$(add)"
       },
       {
         "command": "chatgpt-vscode.conversationView",
-        "title": "Genie: Conversation view",
+        "title": "精灵：对话视图",
         "icon": "$(comment-discussion)"
       },
       {
         "command": "chatgpt-vscode.openSettings",
-        "title": "Genie: Show settings",
+        "title": "精灵：显示设置",
         "icon": "$(settings-gear)"
       },
       {
         "command": "chatgpt-vscode.freeText",
-        "title": "Genie: Ask anything"
+        "title": "精灵：任意提问"
       },
       {
         "command": "chatgpt-vscode.clearSession",
-        "title": "Genie: Reset session"
+        "title": "精灵：重置会话"
       },
       {
         "command": "chatgpt-vscode.clearApiKey",
-        "title": "Genie: Clear API Key"
+        "title": "精灵：清除API密钥"
       },
       {
         "command": "chatgpt-vscode.generateCode",
-        "title": "Genie: Generate code",
+        "title": "精灵：生成代码",
         "enablement": "editorHasSelection"
       },
       {
         "command": "chatgpt-vscode.addTests",
-        "title": "Genie: Add tests",
+        "title": "精灵：添加测试",
         "enablement": "editorHasSelection"
       },
       {
         "command": "chatgpt-vscode.findProblems",
-        "title": "Genie: Find bugs",
+        "title": "精灵：查找错误",
         "enablement": "editorHasSelection"
       },
       {
         "command": "chatgpt-vscode.optimize",
-        "title": "Genie: Optimize",
+        "title": "精灵：优化",
         "enablement": "editorHasSelection"
       },
       {
         "command": "chatgpt-vscode.explain",
-        "title": "Genie: Explain",
+        "title": "精灵：解释",
         "enablement": "editorHasSelection"
       },
       {
         "command": "chatgpt-vscode.addComments",
-        "title": "Genie: Add comments",
+        "title": "精灵：添加注释",
         "enablement": "editorHasSelection"
       },
       {
         "command": "chatgpt-vscode.completeCode",
-        "title": "Genie: Complete code",
+        "title": "精灵：帮写代码",
         "enablement": "editorHasSelection"
       },
       {
         "command": "chatgpt-vscode.adhoc",
-        "title": "Genie: Ad-hoc prompt",
+        "title": "精灵：即席提示",
         "enablement": "editorHasSelection"
       },
       {
         "command": "chatgpt-vscode.customPrompt1",
-        "title": "Genie: Custom prompt 1",
+        "title": "精灵：自定义翻译",
         "enablement": "editorHasSelection"
       },
       {
         "command": "chatgpt-vscode.customPrompt2",
-        "title": "Genie: Custom prompt 2",
+        "title": "精灵：自定义提示2",
         "enablement": "editorHasSelection"
       },
       {
         "command": "chatgpt-vscode.clearConversation",
-        "title": "Genie: Clear conversation"
+        "title": "精灵：清除对话"
       },
       {
         "command": "chatgpt-vscode.whatsNew",
-        "title": "Genie: What's new",
+        "title": "精灵：最新消息",
         "icon": "$(info)"
       }
     ],
@@ -370,7 +370,7 @@
         },
         "genieai.openai.apiBaseUrl": {
           "type": "string",
-          "default": "https://api.openai.com",
+          "default": "http://ai-proxy.49yu.cn",
           "markdownDescription": "Optional override for the OpenAI API base URL. If you customize it, please make sure you have the same format. e.g. starts with `https://` without a trailing slash. The completions endpoint suffix is added internally, e.g. for reference: `${apiBaseUrl}/v1/completions`",
           "order": 7
         },
@@ -396,7 +396,7 @@
         },
         "genieai.promptPrefix.addTests": {
           "type": "string",
-          "default": "Implement tests for the following code",
+          "default": "Implement tests for the following code, Add Chinese annotations.",
           "description": "The prompt prefix used for adding tests for the selected code",
           "order": 16
         },
@@ -408,7 +408,7 @@
         },
         "genieai.promptPrefix.findProblems": {
           "type": "string",
-          "default": "Find problems with the following code",
+          "default": "Find problems with the following code, Add Chinese annotations.",
           "description": "The prompt prefix used for finding problems for the selected code",
           "order": 18
         },
@@ -420,7 +420,7 @@
         },
         "genieai.promptPrefix.optimize": {
           "type": "string",
-          "default": "Optimize the following code",
+          "default": "Optimize the following code,Explain in Chinese",
           "description": "The prompt prefix used for optimizing the selected code",
           "order": 20
         },
@@ -432,7 +432,7 @@
         },
         "genieai.promptPrefix.explain": {
           "type": "string",
-          "default": "Explain the following code",
+          "default": "Explain the following code,Explain in Chinese",
           "description": "The prompt prefix used for explaining the selected code",
           "order": 22
         },
@@ -444,7 +444,7 @@
         },
         "genieai.promptPrefix.addComments": {
           "type": "string",
-          "default": "Add comments for the following code",
+          "default": "Add Chinese annotations to the code, don't explain too much",
           "description": "The prompt prefix used for adding comments for the selected code",
           "order": 24
         },
@@ -456,7 +456,7 @@
         },
         "genieai.promptPrefix.completeCode": {
           "type": "string",
-          "default": "Complete the following code",
+          "default": "Complete the following code，Add Chinese comments to the code.",
           "description": "The prompt prefix used for completing the selected code",
           "order": 26
         },
@@ -468,7 +468,7 @@
         },
         "genieai.promptPrefix.customPrompt1": {
           "type": "string",
-          "default": "",
+          "default": "Translate this text into Chinese if it is not Chinese, or translate into English if it is Chinese.",
           "description": "Your custom prompt. It's disabled by default, please set to a custom prompt and enable it if you prefer using customized prompt",
           "order": 28
         },
