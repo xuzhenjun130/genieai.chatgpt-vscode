@@ -1,0 +1,558 @@
+{
+  "name": "chatgpt-vscode",
+  "publisher": "genieai",
+  "displayName": "ChatGPT - Genie AI",
+  "icon": "images/ai-logo.png",
+  "description": "Your best AI pair programmer. Save conversations and continue any time. A Visual Studio Code - ChatGPT Integration. Supports GPT-4, GPT3.5, GPT3 and Codex models. Create new files, view diffs with one click; your copilot to learn code, add tests, find bugs and more.",
+  "version": "0.0.8",
+  "aiKey": "d91a151b-a961-48f9-b162-55c5cd5d5356",
+  "repository": {
+    "url": "https://github.com/ai-genie/chatgpt-vscode"
+  },
+  "engines": {
+    "vscode": "^1.73.0"
+  },
+  "categories": [
+    "Testing",
+    "Data Science",
+    "Formatters",
+    "Programming Languages",
+    "Linters"
+  ],
+  "keywords": [
+    "chatgpt",
+    "lamda",
+    "bard",
+    "gpt",
+    "gpt3",
+    "gpt3.5",
+    "gpt4",
+    "codex",
+    "openai",
+    "testing",
+    "find bugs",
+    "copilot",
+    "ai"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "menus": {
+      "view/title": [
+        {
+          "command": "chatgpt-vscode.newChat",
+          "when": "view == chatgpt-vscode.view && !chatgpt-vscode.editor-view",
+          "group": "navigation@2"
+        },
+        {
+          "command": "chatgpt-vscode.conversationList",
+          "when": "view == chatgpt-vscode.view && !chatgpt-vscode.editor-view && config.genieai.enableConversationHistory",
+          "group": "navigation@3"
+        },
+        {
+          "command": "chatgpt-vscode.exportConversation",
+          "when": "view == chatgpt-vscode.view && !chatgpt-vscode.editor-view",
+          "group": "navigation@4"
+        },
+        {
+          "command": "chatgpt-vscode.conversationView",
+          "when": "view == chatgpt-vscode.view && chatgpt-vscode.editor-view",
+          "group": "navigation@5"
+        },
+        {
+          "command": "chatgpt-vscode.oneShot",
+          "when": "view == chatgpt-vscode.view && !chatgpt-vscode.editor-view",
+          "group": "navigation@6"
+        },
+        {
+          "command": "chatgpt-vscode.whatsNew",
+          "when": "view == chatgpt-vscode.view",
+          "group": "navigation@7"
+        },
+        {
+          "command": "chatgpt-vscode.openSettings",
+          "when": "view == chatgpt-vscode.view",
+          "group": "navigation@8"
+        }
+      ],
+      "editor/context": [
+        {
+          "command": "chatgpt-vscode.generateCode",
+          "group": "chatGpt@1",
+          "when": "editorHasSelection && chatgpt-vscode.generateCode-enabled"
+        },
+        {
+          "command": "chatgpt-vscode.addTests",
+          "group": "chatGpt@2",
+          "when": "editorHasSelection && chatgpt-vscode.addTests-enabled"
+        },
+        {
+          "command": "chatgpt-vscode.findProblems",
+          "group": "chatGpt@3",
+          "when": "editorHasSelection && chatgpt-vscode.findProblems-enabled"
+        },
+        {
+          "command": "chatgpt-vscode.optimize",
+          "group": "chatGpt@4",
+          "when": "editorHasSelection && chatgpt-vscode.optimize-enabled"
+        },
+        {
+          "command": "chatgpt-vscode.explain",
+          "group": "chatGpt@5",
+          "when": "editorHasSelection && chatgpt-vscode.explain-enabled"
+        },
+        {
+          "command": "chatgpt-vscode.addComments",
+          "group": "chatGpt@6",
+          "when": "editorHasSelection && chatgpt-vscode.addComments-enabled"
+        },
+        {
+          "command": "chatgpt-vscode.completeCode",
+          "group": "chatGpt@7",
+          "when": "editorHasSelection && chatgpt-vscode.completeCode-enabled"
+        },
+        {
+          "command": "chatgpt-vscode.adhoc",
+          "group": "chatGpt@8",
+          "when": "editorHasSelection && chatgpt-vscode.adhoc-enabled"
+        },
+        {
+          "command": "chatgpt-vscode.customPrompt1",
+          "group": "chatGpt@9",
+          "when": "editorHasSelection && chatgpt-vscode.customPrompt1-enabled"
+        },
+        {
+          "command": "chatgpt-vscode.customPrompt2",
+          "group": "chatGpt@10",
+          "when": "editorHasSelection && chatgpt-vscode.customPrompt2-enabled"
+        }
+      ]
+    },
+    "keybindings": [
+      {
+        "command": "chatgpt-vscode.generateCode",
+        "key": "ctrl+shift+a",
+        "mac": "cmd+shift+a",
+        "when": "editorHasSelection"
+      },
+      {
+        "command": "chatgpt-vscode.addTests",
+        "key": "ctrl+k ctrl+shift+1",
+        "mac": "cmd+k cmd+shift+1",
+        "when": "editorHasSelection"
+      },
+      {
+        "command": "chatgpt-vscode.findProblems",
+        "key": "ctrl+k ctrl+shift+2",
+        "mac": "cmd+k cmd+shift+2",
+        "when": "editorHasSelection"
+      },
+      {
+        "command": "chatgpt-vscode.optimize",
+        "key": "ctrl+k ctrl+shift+3",
+        "mac": "cmd+k cmd+shift+3",
+        "when": "editorHasSelection"
+      },
+      {
+        "command": "chatgpt-vscode.explain",
+        "key": "ctrl+k ctrl+shift+4",
+        "mac": "cmd+k cmd+shift+4",
+        "when": "editorHasSelection"
+      },
+      {
+        "command": "chatgpt-vscode.addComments",
+        "key": "ctrl+k ctrl+shift+5",
+        "mac": "cmd+k cmd+shift+5",
+        "when": "editorHasSelection"
+      },
+      {
+        "command": "chatgpt-vscode.completeCode",
+        "key": "ctrl+k ctrl+shift+6",
+        "mac": "cmd+k cmd+shift+6",
+        "when": "editorHasSelection"
+      },
+      {
+        "command": "chatgpt-vscode.adhoc",
+        "key": "ctrl+k ctrl+shift+7",
+        "mac": "cmd+k cmd+shift+7",
+        "when": "editorHasSelection"
+      },
+      {
+        "command": "chatgpt-vscode.customPrompt1",
+        "key": "ctrl+k ctrl+shift+8",
+        "mac": "cmd+k cmd+shift+8",
+        "when": "editorHasSelection"
+      },
+      {
+        "command": "chatgpt-vscode.customPrompt2",
+        "key": "ctrl+k ctrl+shift+9",
+        "mac": "cmd+k cmd+shift+9",
+        "when": "editorHasSelection"
+      }
+    ],
+    "commands": [
+      {
+        "command": "chatgpt-vscode.oneShot",
+        "title": "Genie: Editor view",
+        "icon": "$(file-code)"
+      },
+      {
+        "command": "chatgpt-vscode.exportConversation",
+        "title": "Genie: Export conversation",
+        "icon": "$(export)"
+      },
+      {
+        "command": "chatgpt-vscode.conversationList",
+        "title": "Genie: Show conversations",
+        "icon": "$(history)"
+      },
+      {
+        "command": "chatgpt-vscode.newChat",
+        "title": "Genie: Start a new chat",
+        "icon": "$(add)"
+      },
+      {
+        "command": "chatgpt-vscode.conversationView",
+        "title": "Genie: Conversation view",
+        "icon": "$(comment-discussion)"
+      },
+      {
+        "command": "chatgpt-vscode.openSettings",
+        "title": "Genie: Show settings",
+        "icon": "$(settings-gear)"
+      },
+      {
+        "command": "chatgpt-vscode.freeText",
+        "title": "Genie: Ask anything"
+      },
+      {
+        "command": "chatgpt-vscode.clearSession",
+        "title": "Genie: Reset session"
+      },
+      {
+        "command": "chatgpt-vscode.clearApiKey",
+        "title": "Genie: Clear API Key"
+      },
+      {
+        "command": "chatgpt-vscode.generateCode",
+        "title": "Genie: Generate code",
+        "enablement": "editorHasSelection"
+      },
+      {
+        "command": "chatgpt-vscode.addTests",
+        "title": "Genie: Add tests",
+        "enablement": "editorHasSelection"
+      },
+      {
+        "command": "chatgpt-vscode.findProblems",
+        "title": "Genie: Find bugs",
+        "enablement": "editorHasSelection"
+      },
+      {
+        "command": "chatgpt-vscode.optimize",
+        "title": "Genie: Optimize",
+        "enablement": "editorHasSelection"
+      },
+      {
+        "command": "chatgpt-vscode.explain",
+        "title": "Genie: Explain",
+        "enablement": "editorHasSelection"
+      },
+      {
+        "command": "chatgpt-vscode.addComments",
+        "title": "Genie: Add comments",
+        "enablement": "editorHasSelection"
+      },
+      {
+        "command": "chatgpt-vscode.completeCode",
+        "title": "Genie: Complete code",
+        "enablement": "editorHasSelection"
+      },
+      {
+        "command": "chatgpt-vscode.adhoc",
+        "title": "Genie: Ad-hoc prompt",
+        "enablement": "editorHasSelection"
+      },
+      {
+        "command": "chatgpt-vscode.customPrompt1",
+        "title": "Genie: Custom prompt 1",
+        "enablement": "editorHasSelection"
+      },
+      {
+        "command": "chatgpt-vscode.customPrompt2",
+        "title": "Genie: Custom prompt 2",
+        "enablement": "editorHasSelection"
+      },
+      {
+        "command": "chatgpt-vscode.clearConversation",
+        "title": "Genie: Clear conversation"
+      },
+      {
+        "command": "chatgpt-vscode.whatsNew",
+        "title": "Genie: What's new",
+        "icon": "$(info)"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "chatgpt-vscode-view-container",
+          "title": "Genie",
+          "icon": "images/ai-logo.svg"
+        }
+      ]
+    },
+    "views": {
+      "chatgpt-vscode-view-container": [
+        {
+          "type": "webview",
+          "id": "chatgpt-vscode.view",
+          "name": "Genie"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "ChatGPT",
+      "properties": {
+        "genieai.personalizedName": {
+          "type": "string",
+          "default": "Genie",
+          "description": "Personalize your AI pair programmer. You can rename your assistant to anything you responsibly prefer.",
+          "order": 1,
+          "maxLength": 32
+        },
+        "genieai.enableConversationHistory": {
+          "type": "boolean",
+          "default": false,
+          "markdownDescription": "[Experimental Feature] This feature is experimental. Please be aware that this may not work as expected and/or may be turned off in the future. Enable if you'd like to experiment and give feedback.\n\n**Saves the conversations to your VS Code Extension global storage on your disk.**\n\nOnce you enable this feature, your conversations will start getting persisted on your disk.\n\nCheck top toolbar in the conversation window to see your past conversations.\n\n[Read more about global storage](https://code.visualstudio.com/api/extension-capabilities/common-capabilities#data-storage:~:text=ExtensionContext.globalStorageUri%3A-,A%20global%20storage,-URI%20pointing%20to) \n\nWindows: `%APPDATA%/Code/User/globalStorage/genieai.chatgpt-vscode` \n\n MacOS: `$HOME/Library/Application Support/[Visual Studio ]Code[ - Variant]/User/globalStorage/genieai.chatgpt-vscode`",
+          "order": 2
+        },
+        "genieai.openai.model": {
+          "type": "string",
+          "enum": [
+            "gpt-4",
+            "gpt-4-0314",
+            "gpt-4-32k",
+            "gpt-4-32k-0314",
+            "gpt-3.5-turbo",
+            "gpt-3.5-turbo-0301",
+            "text-davinci-003",
+            "text-davinci-002",
+            "text-curie-001",
+            "text-babbage-001",
+            "text-ada-001",
+            "code-davinci-002",
+            "code-cushman-002"
+          ],
+          "default": "gpt-3.5-turbo",
+          "markdownDescription": "OpenAI models to use for your prompts. [Documentation](https://beta.openai.com/docs/models/models)",
+          "order": 3
+        },
+        "genieai.openai.temperature": {
+          "type": "number",
+          "default": 0.9,
+          "markdownDescription": "What sampling temperature to use. Higher values means the model will take more risks. Try 0.9 for more creative applications, and 0 (argmax sampling) for ones with a well-defined answer.\n\nIt is recommended altering this or top_p but not both. [Documentation](https://beta.openai.com/docs/api-reference/completions/create#completions/create-temperature)\n\n\n\n`0`: Get more precise answers\n\n`0.5`: Get more balanced answers\n\n`0.9`: Get more creative answers",
+          "order": 4
+        },
+        "genieai.openai.maxTokens": {
+          "type": "number",
+          "default": 2048,
+          "markdownDescription": "⚠️ If you receive an HTTP 400 Bad Request, lower your maxTokens setting to allow completion to fulfill your request ⚠️\n\n The maximum number of tokens to generate in the completion.\n\n Choose this number carefully considering the your preferred model's allowed max number of tokens. \n\nThe token count of your prompt plus max_tokens cannot exceed the model's context length. [Documentation](https://beta.openai.com/docs/api-reference/completions/create#completions/create-max_tokens)",
+          "order": 5
+        },
+        "genieai.openai.top_p": {
+          "type": "number",
+          "default": 1,
+          "markdownDescription": "An alternative to sampling with temperature, called nucleus sampling, where the model considers the results of the tokens with top_p probability mass. So 0.1 means only the tokens comprising the top 10% probability mass are considered. \n\nIt is recommended altering this or temperature but not both. [Documentation](https://beta.openai.com/docs/api-reference/completions/create#completions/create-top_p)",
+          "order": 6
+        },
+        "genieai.openai.apiBaseUrl": {
+          "type": "string",
+          "default": "https://api.openai.com",
+          "markdownDescription": "Optional override for the OpenAI API base URL. If you customize it, please make sure you have the same format. e.g. starts with `https://` without a trailing slash. The completions endpoint suffix is added internally, e.g. for reference: `${apiBaseUrl}/v1/completions`",
+          "order": 7
+        },
+        "genieai.openai.organization": {
+          "type": "string",
+          "markdownDescription": "OpenAI Organization ID. [Documentation](https://beta.openai.com/docs/api-reference/requesting-organization).",
+          "order": 8
+        },
+        "genieai.azure.url": {
+          "type": "string",
+          "default": null,
+          "examples": [
+            "https://your-endpoint-base.openai.azure.com/openai/deployments/your-azure-model-name/completions?api-version=2022-12-01"
+          ],
+          "markdownDescription": "⚠️ Please make sure you select the correct model in the extension setting [genieai.openai.model](#genieai.openai.model) that is used as a base model for your Azure OpenAI service deployment. This helps extension figure out whether to use Chat based conversation with the corresponding LLM.\n\nMake sure you enter your full Azure OpenAI deployment URL including the version. \n\ni.e.: `https://your-endpoint-base.openai.azure.com/openai/deployments/your-azure-model-name/completions?api-version=2022-12-01`",
+          "order": 9
+        },
+        "genieai.openai.generateCode-enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable the code generation context menu item for the selected comment/code for Codex. Only available with code-* models",
+          "order": 15
+        },
+        "genieai.promptPrefix.addTests": {
+          "type": "string",
+          "default": "Implement tests for the following code",
+          "description": "The prompt prefix used for adding tests for the selected code",
+          "order": 16
+        },
+        "genieai.promptPrefix.addTests-enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable the prompt prefix used for adding tests for the selected code in the context menu",
+          "order": 17
+        },
+        "genieai.promptPrefix.findProblems": {
+          "type": "string",
+          "default": "Find problems with the following code",
+          "description": "The prompt prefix used for finding problems for the selected code",
+          "order": 18
+        },
+        "genieai.promptPrefix.findProblems-enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable the prompt prefix used for finding problems for the selected code in the context menu",
+          "order": 19
+        },
+        "genieai.promptPrefix.optimize": {
+          "type": "string",
+          "default": "Optimize the following code",
+          "description": "The prompt prefix used for optimizing the selected code",
+          "order": 20
+        },
+        "genieai.promptPrefix.optimize-enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable the prompt prefix used for optimizing the selected code in the context menu",
+          "order": 21
+        },
+        "genieai.promptPrefix.explain": {
+          "type": "string",
+          "default": "Explain the following code",
+          "description": "The prompt prefix used for explaining the selected code",
+          "order": 22
+        },
+        "genieai.promptPrefix.explain-enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable the prompt prefix used for explaining the selected code in the context menu",
+          "order": 23
+        },
+        "genieai.promptPrefix.addComments": {
+          "type": "string",
+          "default": "Add comments for the following code",
+          "description": "The prompt prefix used for adding comments for the selected code",
+          "order": 24
+        },
+        "genieai.promptPrefix.addComments-enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable the prompt prefix used for adding comments for the selected code in the context menu",
+          "order": 25
+        },
+        "genieai.promptPrefix.completeCode": {
+          "type": "string",
+          "default": "Complete the following code",
+          "description": "The prompt prefix used for completing the selected code",
+          "order": 26
+        },
+        "genieai.promptPrefix.completeCode-enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable the prompt prefix used for completing the selected code in the context menu",
+          "order": 27
+        },
+        "genieai.promptPrefix.customPrompt1": {
+          "type": "string",
+          "default": "",
+          "description": "Your custom prompt. It's disabled by default, please set to a custom prompt and enable it if you prefer using customized prompt",
+          "order": 28
+        },
+        "genieai.promptPrefix.customPrompt1-enabled": {
+          "type": "boolean",
+          "default": false,
+          "markdownDescription": "Enable the prompt prefix used for your custom prompt. The default value is empty, if you enable this item make sure to set this `genieai.promptPrefix.customPrompt1`",
+          "order": 29
+        },
+        "genieai.promptPrefix.customPrompt2": {
+          "type": "string",
+          "default": "",
+          "description": "Your custom prompt. It's disabled by default, please set to a custom prompt and enable it if you prefer using customized prompt",
+          "order": 30
+        },
+        "genieai.promptPrefix.customPrompt2-enabled": {
+          "type": "boolean",
+          "default": false,
+          "markdownDescription": "Enable the prompt prefix used for your custom prompt. The default value is empty, if you enable this item make sure to set this `genieai.promptPrefix.customPrompt2`",
+          "order": 31
+        },
+        "genieai.promptPrefix.adhoc-enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable the prompt prefix used for adhoc command for the selected code in the context menu",
+          "order": 32
+        },
+        "genieai.response.showNotification": {
+          "type": "boolean",
+          "default": false,
+          "description": "Choose whether you'd like to receive a notification when ChatGPT bot responds to your query.",
+          "order": 40
+        },
+        "genieai.response.autoScroll": {
+          "type": "boolean",
+          "default": true,
+          "description": "Whenever there is a new question or response added to the conversation window, extension will automatically scroll to the bottom. You can change that behavior by disabling this setting.",
+          "order": 41
+        },
+        "genieai.telemetry.disable": {
+          "type": "boolean",
+          "default": true,
+          "markdownDescription": "Telemetry is disabled by default. Please enable if you want to help us improve our feature development cycles. This extension also respects your default vs-code telemetry setting `telemetry.telemetryLevel`. We check both settings for telemetry. **Important**: No user data is tracked, we only use telemetry to see what is used, and what isn't. This allows us to make accurate decisions on what to add or enhance to the extension.",
+          "order": 42
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "rimraf out && npm-run-all --parallel \"build:* --minify\"",
+    "build:scripts": "esbuild ./src/web/main.js ./src/extension.ts --bundle --outdir=out --external:vscode --format=cjs --platform=node",
+    "build:css": "tailwindcss -i ./src/web/main.css -o ./out/web/main.css",
+    "watch": "npm-run-all --parallel \"build:* --sourcemap --watch\"",
+    "test": "eslint src --ext ts && tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/glob": "^8.0.0",
+    "@types/isomorphic-fetch": "^0.0.36",
+    "@types/mocha": "^10.0.1",
+    "@types/node": "16.x",
+    "@types/uuid": "^9.0.0",
+    "@types/vscode": "^1.73.0",
+    "@types/vscode-webview": "^1.57.0",
+    "@typescript-eslint/eslint-plugin": "^5.45.0",
+    "@typescript-eslint/parser": "^5.45.0",
+    "@vscode/test-electron": "^2.2.0",
+    "esbuild": "^0.15.18",
+    "eslint": "^8.28.0",
+    "glob": "^8.0.3",
+    "mocha": "^10.1.0",
+    "npm-run-all": "^4.1.5",
+    "tailwindcss": "^3.2.7",
+    "ts-loader": "^9.4.1",
+    "typescript": "^4.9.3"
+  },
+  "dependencies": {
+    "@vscode/extension-telemetry": "^0.6.2",
+    "chatgpt": "file:../chatgpt-api/chatgpt-v5.1.1-4.tgz",
+    "delay": "^5.0.0",
+    "isomorphic-fetch": "^3.0.0",
+    "openai": "^3.1.0",
+    "uuid": "^9.0.0"
+  },
+  "resolutions": {
+    "clone-deep": "^4.0.1"
+  }
+}
