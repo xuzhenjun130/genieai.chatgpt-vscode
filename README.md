@@ -26,12 +26,18 @@ https://proxy.aidashi.wiki/
 
 ### 5. 打包成  `.vsix` 文件
 
-打包后的文件，可以直接安装到vscode
 
-```bash
-# 安装打包工具
-npm install -g vsce
-# 打包
-vsce package
-```
+下载原版插件：
+[ChatGPT - Genie AI](https://marketplace.visualstudio.com/_apis/public/gallery/publishers/genieai/vsextensions/chatgpt-vscode/0.0.8/vspackage)
 
+将 `genieai.chatgpt-vscode-0.0.8.vsix`  改为 `genieai.chatgpt-vscode-0.0.8.zip`
+
+用压缩软件打开，手动一个个替换文件，然后将压缩重命名成 `genieai.chatgpt-vscode-0.0.8.vsix`
+
+
+
+本项目中的：`genieai.chatgpt-vscode-0.0.8.vsix` 文件是处理过后的文件， 放心可以直接使用。
+
+### 6. 安装
+
+下载 `genieai.chatgpt-vscode-0.0.8.vsix` 文件，然后在 vscode 中安装即可。
