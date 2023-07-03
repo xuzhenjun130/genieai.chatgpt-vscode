@@ -338,6 +338,7 @@
             "gpt-4-32k-0314",
             "gpt-3.5-turbo",
             "gpt-3.5-turbo-0301",
+            "gpt-3.5-turbo-16k-0613",
             "text-davinci-003",
             "text-davinci-002",
             "text-curie-001",
@@ -346,7 +347,7 @@
             "code-davinci-002",
             "code-cushman-002"
           ],
-          "default": "gpt-3.5-turbo",
+          "default": "gpt-3.5-turbo-16k-0613",
           "markdownDescription": "OpenAI models to use for your prompts. [Documentation](https://beta.openai.com/docs/models/models)",
           "order": 3
         },
@@ -370,7 +371,7 @@
         },
         "genieai.openai.apiBaseUrl": {
           "type": "string",
-          "default": "http://ai-proxy.49yu.cn",
+          "default": "http://api.openai.com",
           "markdownDescription": "Optional override for the OpenAI API base URL. If you customize it, please make sure you have the same format. e.g. starts with `https://` without a trailing slash. The completions endpoint suffix is added internally, e.g. for reference: `${apiBaseUrl}/v1/completions`",
           "order": 7
         },

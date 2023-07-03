@@ -46326,6 +46326,11 @@ var Ns = {
             version: "gpt-3.5",
             type: "chat"
         },
+         "gpt-3.5-turbo-16k-0613": {
+            maxTokens: 16384,
+            version: "gpt-3.5",
+            type: "chat"
+        },
         "text-davinci-003": {
             maxTokens: 4096,
             version: "gpt-3.5",
