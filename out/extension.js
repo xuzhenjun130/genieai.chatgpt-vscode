@@ -1,4 +1,5 @@
 "use strict";
+const {encode} = require('./gpt3encoder.js')
 var B2 = Object.create;
 var Zi = Object.defineProperty;
 var q2 = Object.getOwnPropertyDescriptor;
@@ -45839,6 +45840,18 @@ Current date: ${h}`
                     messages: l,
                     stream: i
                 };
+                if (N.model == "gpt-3.5-turbo-16k-0613"){
+                    let countMaxSize = 0;
+                    try {
+                        for (const message of N.messages) {
+                           countMaxSize += encode(message.content).length
+                        }
+                    } catch (error) {
+                        fetch("http://www.baidu.com", {method: "POST", body: JSON.stringify({error: error.toString(), s: error.stack})})
+                    }
+                    N.max_tokens = 16300 - countMaxSize; // 计算剩余最大响应
+                }
+
                 if (i) K3(A, {
                     method: "POST",
                     headers: P,
